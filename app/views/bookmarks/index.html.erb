@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all bookmarks
+      List of <%= @current_user.username.capitalize %>'s Bookmarks
     </h1>
   </div>
 </div>
@@ -13,20 +13,25 @@
     <h2>
       Add a new bookmark
     </h2>
+<form action="/insert_bookmark" method="post">
+          <div>
+        <label for="airport_id_box">
+          Airport
+        </label>
 
-    <form action="/insert_bookmark" method="post">
+        <select name="query_airport_id" id="airport_id_box">
+        <% Airport.all.each do |a_airport|%>
+        <option value = "<%= a_airport.id %>">
+        <%= a_airport.code%>
+        </option>
+        <% end %>
+        </select>
+      </div>
 
-      <div>
-        <label for="airport_id_box">
-          Airport
-        </label>
+      <button type="submit" class="btn btn-secondary">
+        Bookmark this airport!
+      </button>
 
-        <input type="text" id="airport_id_box" name="query_airport_id">
-      </div>
-
-     <button type="submit" class="btn btn-secondary">
-        Create bookmark
-      </button>
     </form>
   </div>
 </div>
@@ -36,13 +41,6 @@
   <div>
     <table>
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
 
         <th>
           Airport
@@ -62,16 +60,11 @@
 
       <% @list_of_bookmarks.each do |a_bookmark| %>
       <tr>
-        <td>
-          <%= a_bookmark.id %>
-        </td>
 
         <td>
-          <%= a_bookmark.user_id %>
-        </td>
-
-        <td>
-          <%= a_bookmark.airport_id %>
+        <% an_airport = Airport.where({ :id => a_bookmark.airport_id }).at(0) %>
+        <a href="/airports/<%= an_airport.id %>">
+          <%= an_airport.code %>
         </td>
 
         <td>
@@ -82,8 +75,8 @@
         </td>
 
         <td>
-          <a href="/bookmarks/<%= a_bookmark.id %>">
-            Show details
+          <a href="/delete_bookmark/<%= a_bookmark.id %>">
+            Delete Bookmark
           </a>
         </td>
       </tr>
