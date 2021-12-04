@@ -18,56 +18,27 @@
 
     </head>
     <body>
-     <div class="container">
-    <div class="row">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/airports"> All Airports</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    </div>
-
-      
-      <% if @current_user == nil %>
-        
-        <div class="container-fluid">
-    <a class="navbar-brand" href="/user_sign_up"> Sign-up </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-       </div>
-
-            <div class="container-fluid">
-    <a class="navbar-brand" href="/user_sign_in"> Sign-in </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-       </div>
-
-
-      <% else %>
-      
-            <div class="container-fluid">
-    <a class="navbar-brand" href="/bookmarks"> <%= @current_user.username %>'s bookmarks </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-       </div>
-
-             <div class="container-fluid">
-    <a class="navbar-brand" href="/user_sign_out"> Sign-out <%= @current_user.username %> </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-       </div>
-      <% end %>
-
- </navbar>
- </div>
- </div>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Waittime</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/airports">All Airports</a>
+            <% if @current_user == nil %>
+              <a class="nav-link" href="/user_sign_in">Sign In</a>
+              <a class="nav-link" href="/user_sign_up">Sign Up</a>
+            <% else %>
+              <a class="nav-link" href="/bookmarks"> <%= @current_user.username.capitalize %>'s bookmarks</a>
+              <a class="nav-link" href="/user_sign_out">Sign Out <%= @current_user.username.capitalize %> </a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
 
 
 
