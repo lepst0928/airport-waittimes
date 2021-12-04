@@ -1,0 +1,182 @@
+<div>
+  <div>
+    <h1>
+      List of all airports
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new airport
+    </h2>
+
+    <form action="/insert_airport" method="post">
+      <div>
+        <label for="code_box">
+          Code
+        </label>
+
+        <input type="text" id="code_box" name="query_code">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="city_box">
+          City
+        </label>
+
+        <input type="text" id="city_box" name="query_city">
+      </div>
+
+      <div>
+        <label for="state_box">
+          State
+        </label>
+
+        <input type="text" id="state_box" name="query_state">
+      </div>
+
+      <div>
+        <label for="lat_box">
+          Lat
+        </label>
+
+        <input type="text" id="lat_box" name="query_lat">
+      </div>
+
+      <div>
+        <label for="long_box">
+          Long
+        </label>
+
+        <input type="text" id="long_box" name="query_long">
+      </div>
+
+      <div>
+        <label for="waittime_box">
+          Waittime
+        </label>
+
+        <input type="time" id="waittime_box" name="query_waittime">
+      </div>
+
+      <button>
+        Create airport
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Code
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          City
+        </th>
+
+        <th>
+          State
+        </th>
+
+        <th>
+          Lat
+        </th>
+
+        <th>
+          Long
+        </th>
+
+        <th>
+          Waittime
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_airports.each do |an_airport| %>
+      <tr>
+        <td>
+          <%= an_airport.id %>
+        </td>
+
+        <td>
+          <%= an_airport.code %>
+        </td>
+
+        <td>
+          <%= an_airport.name %>
+        </td>
+
+        <td>
+          <%= an_airport.city %>
+        </td>
+
+        <td>
+          <%= an_airport.state %>
+        </td>
+
+        <td>
+          <%= an_airport.lat %>
+        </td>
+
+        <td>
+          <%= an_airport.long %>
+        </td>
+
+        <td>
+          <%= an_airport.waittime %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_airport.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_airport.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/airports/<%= an_airport.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

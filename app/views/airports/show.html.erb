@@ -1,0 +1,179 @@
+<div>
+  <div>
+    <h1>
+      <%= @the_airport.name %> Details
+    </h1>
+
+
+    <div>
+      <div>
+        <a href="/airports">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_airport/<%= @the_airport.id %>">
+          Delete airport
+        </a>
+      </div>
+    </div>
+     <% if @current_user != nil %>
+      <% current_user_bookmarks = @current_user.bookmarks.where({ :airport_id => @the_airport.id }) %>
+
+      <% the_bookmark = current_user_bookmarks.at(0) %>
+
+      <% if the_bookmark == nil %>
+        <form action="/insert_bookmark" method="post">      
+          <input type="hidden" name="query_airport_id" value="<%= @the_airport.id %>">
+
+          <button>Bookmark this airport!</button>
+        </form>
+      <% else %>
+        <a href="/delete_bookmark/<%= the_bookmark.id %>">
+          Un-bookmark
+        </a>
+      <% end %>
+    <% end %>
+
+    <dl>
+      <dt>
+        Code
+      </dt>
+      <dd>
+        <%= @the_airport.code %>
+      </dd>
+
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_airport.name %>
+      </dd>
+
+      <dt>
+        City
+      </dt>
+      <dd>
+        <%= @the_airport.city %>
+      </dd>
+
+      <dt>
+        State
+      </dt>
+      <dd>
+        <%= @the_airport.state %>
+      </dd>
+
+      <dt>
+        Lat
+      </dt>
+      <dd>
+        <%= @the_airport.lat %>
+      </dd>
+
+      <dt>
+        Long
+      </dt>
+      <dd>
+        <%= @the_airport.long %>
+      </dd>
+
+      <dt>
+        Waittime
+      </dt>
+      <dd>
+        <%= @the_airport.waittime %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_airport.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_airport.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit airport
+    </h2>
+
+    <form action="/modify_airport/<%= @the_airport.id %>"  method="post" >
+      <div>
+        <label for="code_box">
+          Code
+        </label>
+
+        <input type="text" id="code_box" name="query_code" value="<%= @the_airport.code %>">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_airport.name %>">
+      </div>
+
+      <div>
+        <label for="city_box">
+          City
+        </label>
+
+        <input type="text" id="city_box" name="query_city" value="<%= @the_airport.city %>">
+      </div>
+
+      <div>
+        <label for="state_box">
+          State
+        </label>
+
+        <input type="text" id="state_box" name="query_state" value="<%= @the_airport.state %>">
+      </div>
+
+      <div>
+        <label for="lat_box">
+          Lat
+        </label>
+
+        <input type="text" id="lat_box" name="query_lat" value="<%= @the_airport.lat %>">
+      </div>
+
+      <div>
+        <label for="long_box">
+          Long
+        </label>
+
+        <input type="text" id="long_box" name="query_long" value="<%= @the_airport.long %>">
+      </div>
+
+      <div>
+        <label for="waittime_box">
+          Waittime
+        </label>
+
+        <input type="time" id="waittime_box" name="query_waittime" value="<%= @the_airport.waittime %>">
+      </div>
+
+      <button>
+        Update airport
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
