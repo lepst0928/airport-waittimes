@@ -27,7 +27,7 @@
         <form action="/insert_bookmark" method="post">      
           <input type="hidden" name="query_airport_id" value="<%= @the_airport.id %>">
 
-          <button>Bookmark this airport!</button>
+          <button type="submit" class="btn btn-secondary">Bookmark this airport!</button>
         </form>
       <% else %>
         <a href="/delete_bookmark/<%= the_bookmark.id %>">
@@ -169,7 +169,7 @@
         <input type="time" id="waittime_box" name="query_waittime" value="<%= @the_airport.waittime %>">
       </div>
 
-      <button>
+      <button type="submit" class="btn btn-primary">
         Update airport
       </button>
     </form>
