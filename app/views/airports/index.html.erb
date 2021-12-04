@@ -63,6 +63,9 @@
         <input type="text" id="long_box" name="query_long">
       </div>
 
+
+      </div>
+
       <div>
         <label for="waittime_box">
           Waittime
@@ -79,104 +82,89 @@
 </div>
 
 <hr>
-<div>
-  <div>
-    <table>
-      <tr>
-        <th>
+<div class="container">
+  <div class="row">
+    <div class="col">
           ID
-        </th>
-
-        <th>
+         </div>
+    <div class="col">
           Code
-        </th>
-
-        <th>
+        </div>
+    <div class="col">
           Name
-        </th>
-
-        <th>
+       </div>
+    <div class="col">
           City
-        </th>
-
-        <th>
+    </div>
+    <div class="col">
           State
-        </th>
-
-        <th>
+      </div>
+    <div class="col">
           Lat
-        </th>
-
-        <th>
+    </div>
+    <div class="col">
           Long
-        </th>
-
-        <th>
+       </div>
+    <div class="col">
           Waittime
-        </th>
-
-        <th>
+       </div>
+    <div class="col">
           Created at
-        </th>
-
-        <th>
+       </div>
+    <div class="col">
           Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_airports.each do |an_airport| %>
-      <tr>
-        <td>
-          <%= an_airport.id %>
-        </td>
-
-        <td>
-          <%= an_airport.code %>
-        </td>
-
-        <td>
-          <%= an_airport.name %>
-        </td>
-
-        <td>
-          <%= an_airport.city %>
-        </td>
-
-        <td>
-          <%= an_airport.state %>
-        </td>
-
-        <td>
-          <%= an_airport.lat %>
-        </td>
-
-        <td>
-          <%= an_airport.long %>
-        </td>
-
-        <td>
-          <%= an_airport.waittime %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(an_airport.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(an_airport.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/airports/<%= an_airport.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+      </div>
+        <div class="col">
+         Details
+      </div>
+ </div>
 </div>
 
-<hr>
+      <div class="container">
+       <div class="row">
+     
+      <% @list_of_airports.each do |an_airport| %>
+
+    <div class="col">
+          <%= an_airport.id %>
+        </div>
+    <div class="col">
+          <%= an_airport.code %>
+         </div>
+    <div class="col">
+          <%= an_airport.name %>
+        </div>
+    <div class="col">
+          <%= an_airport.city %>
+        </div>
+    <div class="col">
+          <%= an_airport.state %>
+        </div>
+    <div class="col">
+          <%= an_airport.lat %>
+        </div>
+    <div class="col">
+          <%= an_airport.long %>
+        </div>
+    <div class="col">
+          <%= an_airport.waittime %>
+        </div>
+    <div class="col">
+          <%= time_ago_in_words(an_airport.created_at) %> ago
+        </div>
+    <div class="col">
+          <%= time_ago_in_words(an_airport.updated_at) %> ago
+         </div>
+    <div class="col">
+          <a href="/airports/<%= an_airport.id %>">
+            Show details </a>
+          </div>
+          </div>
+          
+         
+
+      <% end %>
+
+
+
+</hr>

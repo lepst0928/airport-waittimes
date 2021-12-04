@@ -25,6 +25,7 @@ class AirportsController < ApplicationController
     the_airport.state = params.fetch("query_state")
     the_airport.lat = params.fetch("query_lat")
     the_airport.long = params.fetch("query_long")
+    # the_airport.precheck = params.fetch("query_precheck")
     the_airport.waittime = params.fetch("query_waittime")
 
     if the_airport.valid?
