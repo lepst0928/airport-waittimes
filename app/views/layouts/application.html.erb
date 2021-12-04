@@ -12,12 +12,71 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
 
-  </head>
 
-  <body>
+    </head>
+    <body>
+     <div class="container">
+    <div class="row">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/airports"> All Airports</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    </div>
+
+      
+      <% if @current_user == nil %>
+        
+        <div class="container-fluid">
+    <a class="navbar-brand" href="/user_sign_up"> Sign-up </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+       </div>
+
+            <div class="container-fluid">
+    <a class="navbar-brand" href="/user_sign_in"> Sign-in </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+       </div>
+
+
+      <% else %>
+      
+            <div class="container-fluid">
+    <a class="navbar-brand" href="/bookmarks"> <%= @current_user.username %>'s bookmarks </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+       </div>
+
+             <div class="container-fluid">
+    <a class="navbar-brand" href="/user_sign_out"> Sign-out <%= @current_user.username %> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+       </div>
+      <% end %>
+
+ </navbar>
+ </div>
+ </div>
+
+
+
+
+    <p style="color: green"><%= notice %></p>
+
+    <p style="color: red"><%= alert %></p>
+
     <%= yield %>
+   
   </body>
 </html>
+
