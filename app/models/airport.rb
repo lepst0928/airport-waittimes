@@ -5,8 +5,8 @@
 #  id         :integer          not null, primary key
 #  city       :string
 #  code       :string
-#  lat        :float
-#  long       :float
+#  lat        :float, removed
+#  long       :float, removed
 #  name       :string
 #  state      :string
 #  waittime   :time
